@@ -49,4 +49,5 @@ class test_fibonacci(unittest.TestCase):
         result = fibonacci(9)
         self.assertEqual(result, 34)
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
