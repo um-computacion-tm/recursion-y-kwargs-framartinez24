@@ -1,0 +1,42 @@
+import unittest
+
+from arg_kwargs import *
+
+class TestFindId(unittest.TestCase):
+    def setUp(self):
+        self.database0 = {
+            "person0": {
+                "primer_nombre": "Menem",
+                "segundo_nombre": "Heroe",
+                "primer_apellido": "Nacional",
+                "segundo_apellido": "Intergalactico"
+            },
+            "person1": {
+                "primer_nombre": "Armando",
+                "segundo_nombre": "esteban",
+                "primer_apellido": "quito",
+                "segundo_apellido": "roble"
+            },
+            "person2": {
+                "primer_nombre": "Messi",
+                "segundo_nombre": "Dios",
+                "primer_apellido": "Todo",
+                "segundo_apellido": "Poderoso"
+            },
+            "person3": {
+                "primer_nombre": "Fran",
+                "segundo_nombre": "Ariel",
+                "primer_apellido": "Martinez",
+                "segundo_apellido": "Escala"
+            }
+        }
+    def test_in_database(self):
+        ID = find_id("Fran", "Ariel", "Martinez", "Escala", **self.database0)
+        self.assertEqual(ID, "person3", "Wrong person ID")
+        print(ID)
+
+    def test_not_in_database(self):
+        ID = find_id("ronaldo", "huele", "a", "maraca", **self.database0)
+        self.assertEqual(ID, "Not in database")
+
+unittest.main()
